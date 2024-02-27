@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #img1 {
+            width: 650px;
+            
+        }   
+    </style>
+</head>
+
+<body>
+    <div id="leil"></div>
+    <img id="img1"/>
+    
+    <script>
+        showout() 
+        function showhall() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3><p>Du er nå i gangen, Du ser inngangen til stuen og døren som går inn til din datters rom.</h3>
+                <button onclick="showout()">Gå ut</button>
+                <button onclick="showgang2()">Gå inn til stue</button>
+                <button onclick="showdatter()">Gå inn på datter sitt rom</button>
+
+                `;
+        }
+        function showout() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3>Du står utenfor inngangsdøren til en leilighet</h3>
+                <button onclick="showgarden()">Snu deg</button>
+                <button onclick="showhall()">Gå inn i leiligheten</button>
+                
+                `;
+        }
+        function showgarden() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3>Du ser en gressplett, ett huskestativ og en sittergruppe i hagen</h3>
+                <button onclick="showtouchgrass()">Ta av deg skoene for å traske i gresset</button>
+                <button onclick="showhuske()">Huske litt på huskestativet</button>
+                <button onclick="showsittegruppe()">Sett deg for å slappe av i solen</button>
+                <button onclick="showout()">Gå inn igjen</button>
+
+                `;
+        }
+        function showtouchgrass() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3>Det er deilig å føle solen i ansiktet og gresset mellom tærne</h3>
+                <button onclick="showgtouchgrass()">Ta av deg skoene for å traske i gresset</button>
+                <button onclick="showout()">Gå tilbake</button>
+
+                `;
+        }
+        function showhuske() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3>STOR FART!</h3>
+                <button onclick="showstørrefart()">Du tar i større fart</button>
+                
+                `;
+        }
+        function showsittegruppe() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3>Solveggen er varm og god og du kjenner roen senker seg</h3>
+                <button onclick="showgarden()">Reis deg opp</button>
+                <button onclick="showsnap()">napptime!</button>
+                
+                `;
+        }
+        function showstørrefart() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3>Du snurrer rundt å tar en salto, Men lander mirakuløøst på bena!</h3>
+                <button onclick="showout()">Ta på skoene igjen</button>
+                
+                
+
+                `;
+        }
+        function showsnap() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3>Du våkner 3 timer senere og du ser ut som en tomat</h3>
+                <button onclick="showout()">Ta på skoene igjen</button>
+                
+                
+
+                `;
+        }
+        function showdatter() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3>Du går inn på din datters rom for å se om det er rotete.</h3>
+                <button onclick="showhall()">Gå ut i gangen igjen</button>
+                
+                
+
+                `;
+        }
+        function showstue() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3>Du er i stuen, Her spraker det i peisen og guttungen sitter på sofaen 
+                    og ser på Paw patrol, Du ser også ett sinnsykt streaming setup du har vedig lyst å prøve</h3>
+                <button onclick="showhall()">Gå ut i gangen igjen</button>
+                <button onclick="showkjøkken()">Gå inn på kjøkkenet </button>
+                <button onclick="showsoverom()">Gå inn på soverommet </button>
+                <button onclick="showsetup()">Sette seg ned ved pc'n </button>
+                
+                
+
+                `;
+        }
+        function showkjøkken() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3>Kjøkkenet er stort og fint, Mye benkplass, induksjonsovn, side by side kjøleskap. Lyst og fint!</h3>
+                <button onclick="showstue()">Gå tilbake til stuen</button>
+                
+                
+                
+
+                `;
+        }
+        function showgang2() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3>Du går litt lenger inn i gange å legger merke til at det er et baderom på veien</h3>
+                <button onclick="showstue()">Gå videre inn i huset til stuen</button>
+                <button onclick="showbad()">Gå inn på badet</button>
+                
+                
+                
+
+                `;
+        }
+        function showbad() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3>Her er det ingenting å rope hurra for, Det er ett toalett, en dusj og noen andre pyntegjenstander. Helt okei bad.</h3>
+                <button onclick="showstue()">Gå videre inn i huset til stuen</button>
+                <button onclick="showstue()">Gå inn på badet</button>
+                
+                
+                
+
+                `;
+        }
+        function showsoverom() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+                <h3>Du er på "The master bedroom" Ingenting å skryte av. En seng og et garderobeskap</h3>
+                <button onclick="showstue()">Gå ut i stuen igjen</button>
+                <li></li>
+                
+                
+                
+
+                `;
+        }
+        function showsetup() {
+            document.getElementById('leil').innerHTML = /*HTML*/ `
+            <h3>Digg stol, 3 skjermer og allt du kan tenke deg av verktøy ved fingertuppene.</h3>
+                <button onclick="showstue()">Slå av pc'n</button>
+                <img src="setup.PNG" id="img1"/>
+                
+                `;
+        
+            }
+
+
+    </script>
+</body>
+
+</html>

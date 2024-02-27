@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #70e0f6;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(9, 60px);
+            grid-template-rows: repeat(10, 60px);
+
+        }
+
+        .box {
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .box_NoLadder {
+            background-color: rgb(249, 249, 91);
+        }
+        .box_up {
+            background-color: rgb(108, 238, 119);
+        }
+        .box_upTo {
+            background-color: rgb(170, 255, 177);
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .box_down {
+            background-color: rgb(243, 106, 68);
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .box_downTo {
+            background-color: rgb(244, 171, 151);
+        }
+
+        .number {
+            position: absolute;
+            bottom: 1px;
+            right: 1px;
+            font-size: small;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="board" id="container"></div>
+
+    <script>
+        var colonner = 9;
+        var rader = 10;
+        var mengde = colonner * rader;
+        var listetall = 0;
+        var listetall2 = 0;
+        const stiger = [
+            ["down", 70, 87],
+            ["up", 68, 85],
+            ["up", 65, 82],
+            ["up", 49, 79],
+            ["down", 37, 56],
+            ["up", 43, 62],
+            ["up", 36, 52],
+            ["down", 30, 42],
+            ["down", 12, 74],
+            ["up", 1, 40],
+            ["down", 3, 33],
+            ["down", 5, 24],
+            ["up", 8, 10],
+            ["nope", 0, 0],
+        ];
+
+        createRow()
+        function createRow() {
+            for (let StartRad = 1; StartRad <= rader; StartRad++) {
+                if (StartRad != 1) {
+                    mengde = mengde - 9;
+                };
+                for (let StartCollonne = 1; StartCollonne <= colonner; StartCollonne++) {
+                    let direction = getLadderFrom(mengde)
+                    document.getElementById("container").innerHTML += /*HTML*/ `
+                    <div id="div_${mengde}" class="box box_${direction[0]}">${direction[1]}<span class="number">${mengde}</span> </div>
+                    `;
+                    PlaceLadderAt(mengde)
+                    if (StartCollonne != colonner) {
+                        if (StartRad % 2) {
+                            mengde--;
+                        } else {
+                            mengde++;
+                        };
+                    }
+                }
+            }
+        }
+
+
+        
+        function getLadderFrom(squareNr) {
+            let direction = "NoLadder"
+            let LadderTo = ""
+            if (stiger[listetall][1] == squareNr) {
+                if (stiger[listetall][0] == "up") {
+                    direction = "up"
+                    LadderTo = "Til " + stiger[listetall][2]
+                } else {
+                    direction = "downTo"
+                }
+                listetall++
+            }
+
+            const smolList = [direction, LadderTo]
+            return smolList
+        }
+        function PlaceLadderAt (squareNr) {
+            let DivID = "div_" + stiger[listetall2][2]
+            if (stiger[listetall2][1] == squareNr) {
+                if (stiger[listetall2][0] == "up") {
+                    document.getElementById(DivID).className = "box_upTo"
+                } else {
+                    document.getElementById(DivID).className = "box_down"
+                    document.getElementById(DivID).innerHTML += "Til " + stiger[listetall2][1]
+                }
+                listetall2++
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+<!-- STEP 3
+Lag en funksjon getLadderFrom. Denne tar en parameter, squareNo - 
+som representerer tallet i hver rute. Hvis det ikke starter noen stige i 00
+angitte squareNo, skal funksjonen returnere null. Ellers skal den returnere 
+rutenummeret som stigen fører til. I denne funksjonen blir det bare en lang 
+rekke av if-setninger. En for hver stige. -->

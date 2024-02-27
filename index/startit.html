@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+        }
+
+        #board>div {
+            border: 1px solid lightblue;
+            font-size: 300%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <Button onclick="showboard()">Test</Button>
+    
+    <div id="app">
+        <div id="board">
+            <div>X</div>
+            <div>O</div>
+            <div><button>X</button></div>
+
+            <div><button>X</button></div>
+            <div><button>X</button></div>
+            <div><button>X</button></div>
+
+            <div><button>X</button></div>
+            <div><button>X</button></div>
+            <div><button>X</button></div>
+
+        </div>
+        Det er X sin tur.
+    </div>
+    <script>
+        function showboard() {
+           
+        document.getElementById('app').innerHTML = '<h1>Håvard</h1>'
+            
+        }
+    </script>
+
+</body>
+
+</html>
