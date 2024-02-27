@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #board {
+            display: grid;
+            grid-template-columns: repeat(8, 100px);
+            grid-template-rows: repeat(8, 100px);
+        }
+
+        .lightSquare {
+            background-color: rgb(240, 217, 181);
+        }
+
+        .darkSquare {
+            background-color: rgb(181, 136, 99);
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+        Måte å jobbe på 
+          HTML
+          Lage HTML med JavaScript-funksjon
+          Mer generelle funksjoner 
+            - funksjoner uten parametre
+            - funksjoner med parametre
+        DRY-prinsippet (Don't repeat yourself)        
+        Implementering <-> Refactoring 
+    -->
+    <div id="board"></div>
+
+    <script>
+        drawboard();
+
+        function drawboard() {
+            document.getElementById('board').innerHTML = /*HTML*/`
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+            <div class="darkSquare"></div>
+            <div class="lightSquare"></div>
+        `;
+        }
+            
+    </script>
+</body>
+
+</html>
