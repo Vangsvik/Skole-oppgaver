@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+        // Model
+        let upgradeCount = 1;
+
+
+
+
+        // View
+        updateView();
+        
+        function updateView() {
+            document.getElementById('app').innerHTML = /*HTML*/`
+            <div>😅</div>
+            <div id="myText">hei</div>
+            <div id="number">0</div>
+            <button onclick="doClick()">Count</button>
+            <button>upgrade</button>
+            `;
+            }
+
+        // Controller
+        function doClick() {
+            let divTag = document.getElementById('number')
+            
+            
+            
+            let number = parseInt(divTag.innerHTML); // Hente ut nåværende tall i divven
+            number += upgradeCount;
+            divTag.innerHTML = number;
+            
+            let myText = document.getElementById('myText')
+            let text = myText.innerHTML;
+        }
+
+        function upgrade() {
+        upgradeCount++;
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+<!-- <body>
+    <div id='app'>
+        <button onclick="updateNumber()">Trykk denne knappen for å starte 👇</button>
+    </div>
+
+    <script>
+        // Definerer 'count' som en global variabel innenfor dette scriptet.
+        let count = 1
+        function updateNumber() {
+            document.getElementById('app').innerHTML = /*HTML*/ `
+                <h1>${count}</h1>
+                <button onclick="increaseCount()">Øke med én</button>
+                <button onclick="doubleCount()">Doble</button>
+                `}
+
+        function increaseCount() {
+            count++;
+            updateNumber();
+           }
+
+        function doubleCount() {
+            count *= 2;
+            updateNumber();
+          }
+    </script>
+</body> -->

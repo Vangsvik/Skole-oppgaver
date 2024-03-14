@@ -1,2 +1,2 @@
 # Skole-oppgaver
- Oppgaver som gjøre på skolen
+ Oppgaver som gjøres på skolen

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>🙂</h1>
+    <div id="Container">
+    <div id="number">0</div>
+    
+    <button id="Økning">+</button>
+    <button id="Forminskelse">-</button>
+    <Button onclick="">Upgrade</Button>
+    </div>
+
+
+    <script>
+        let add = document.getElementById('Økning');
+        let remove = document.getElementById('Forminskelse');
+
+        let int = document.getElementById('number');
+        let integer = 0;
+
+        add.addEventListener('click', function () {
+            integer += 1;
+            int.innerHTML = integer;
+            
+        })
+
+        remove.addEventListener('click', function () {
+            integer -= 1;
+            int.innerHTML = integer;
+        
+        })
+
+    </script>
+
+</body>
+
+</html>

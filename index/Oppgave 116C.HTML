@@ -21,10 +21,10 @@
         showout() 
         function showhall() {
             document.getElementById('leil').innerHTML = /*HTML*/ `
-                <h3><p>Du er nå i gangen, Du ser inngangen til stuen og døren som går inn til din datters rom.</h3>
+                <h3><p>Du er nå i gangen, Du ser inngangen til stuen og døren som går inn til det første soverommet.</h3>
                 <button onclick="showout()">Gå ut</button>
                 <button onclick="showgang2()">Gå inn til stue</button>
-                <button onclick="showdatter()">Gå inn på datter sitt rom</button>
+                <button onclick="showdatter()">Gå inn på soverommet </button>
 
                 `;
         }
@@ -42,15 +42,14 @@
                 <button onclick="showtouchgrass()">Ta av deg skoene for å traske i gresset</button>
                 <button onclick="showhuske()">Huske litt på huskestativet</button>
                 <button onclick="showsittegruppe()">Sett deg for å slappe av i solen</button>
-                <button onclick="showout()">Gå inn igjen</button>
+                <button onclick="showhall()">Gå inn igjen</button>
 
                 `;
         }
         function showtouchgrass() {
             document.getElementById('leil').innerHTML = /*HTML*/ `
                 <h3>Det er deilig å føle solen i ansiktet og gresset mellom tærne</h3>
-                <button onclick="showgtouchgrass()">Ta av deg skoene for å traske i gresset</button>
-                <button onclick="showout()">Gå tilbake</button>
+                <button onclick="showgarden()">Gå tilbake</button>
 
                 `;
         }
@@ -72,7 +71,7 @@
         function showstørrefart() {
             document.getElementById('leil').innerHTML = /*HTML*/ `
                 <h3>Du snurrer rundt å tar en salto, Men lander mirakuløøst på bena!</h3>
-                <button onclick="showout()">Ta på skoene igjen</button>
+                <button onclick="showgarden()">Ta på skoene igjen</button>
                 
                 
 
@@ -81,7 +80,7 @@
         function showsnap() {
             document.getElementById('leil').innerHTML = /*HTML*/ `
                 <h3>Du våkner 3 timer senere og du ser ut som en tomat</h3>
-                <button onclick="showout()">Ta på skoene igjen</button>
+                <button onclick="showgarden()">Ta på skoene igjen</button>
                 
                 
 
@@ -102,7 +101,8 @@
                     og ser på Paw patrol, Du ser også ett sinnsykt streaming setup du har vedig lyst å prøve</h3>
                 <button onclick="showhall()">Gå ut i gangen igjen</button>
                 <button onclick="showkjøkken()">Gå inn på kjøkkenet </button>
-                <button onclick="showsoverom()">Gå inn på soverommet </button>
+                <button
+                 onclick="showsoverom()">Gå inn på soverommet </button>
                 <button onclick="showsetup()">Sette seg ned ved pc'n </button>
                 
                 

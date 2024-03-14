@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+         Varibler:
+         - Deklarerer
+         - Tilordner
+         -Lese
+
+        
+        */
+       let paidAmountPer; // Deklarasjon
+       paidAmountPer = 3000; // Tilordning - Endre
+       paidAmountPål = 300;
+       paidAmountEspen = 0;
+
+       let totalPaidAmount = paidAmountPer + paidAmountEspen + paidAmountPål;
+       let costPerPerson = totalPaidAmount / 3;
+
+       let balancePer = paidAmountPer = costPerPerson;
+       let balancePål = paidAmountPål = costPerPerson;
+       let balanceEspen = paidAmountEspen costPerPerson;
+
+    document.getElementById('app').innerHTML = /*HTML*/`
+        Totalkostnad: ${totalPaidAmount} <br/>
+        Kostnadperperson: ${costPerPerson} <br/>
+        Per - til gode/skylder : ${balancePer} <br/>
+        Pål - til gode/skylder : ${balancePål} <br/>
+        Espen - til gode/skylder : ${balanceEspen} <br/>
+
+     `;
+
+    // lese verdi 
+       
+       // Hvordan vet du hvilken funksjon som fungerer?
+        
+        // Per, Pål og Espen 
+        
+    
+    
+    </script>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>document</title>
 </head>
 <style>
     table {
@@ -27,49 +27,35 @@
     }
 </style>
 
-<body>
-    <div id="table"></div>
-
-    <div>
-        <table>
-            <tr>
-                <th>Dag</th>
-                <th>Time</th>
-                <th>Minutt</th>
-                <th>Temperatur</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>10</td>
-                <td>0</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>10</td>
-                <td>15</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>10</td>
-                <td>30</td>
-                <td>7</td>
-            </tr>
-        </table>
-    </div>
+<body onload="showTable()">
+    <table id="myTable"></table>
     <script>
-        addrow();
-
-        function addrow() {
-            document.getElementById('table').innerHTML = /*HTML*/`
-            
-            
-            `;
+        function showTable() {
+            addRow('th', 'Dag', 'Time', 'Minutt', 'Temperatur');
+            addRow('td', 1, 10, 0, 5);
+            addRow('td', 1, 10, 15, 6);
+            addRow('td', 1, 10, 30, 7);
+            addRow('td', 0, 0, 0, 0)
+            addRow('td', 0, 0, 0, 0)
         }
-       
+        function addRow(tag, number1, number2, number3, number4){
+            document.getElementById('myTable').innerHTML += /*HTML*/`
+            <tr>
+                    <${tag}>${number1}</${tag}>
+                    <${tag}>${number2}</${tag}>
+                    <${tag}>${number3}</${tag}>
+                    <${tag}>${number3}</${tag}>
+                    <${tag}>${number4}</${tag}>
+                    </tr>   
+                    `;
+                    
+        
+        }
+
 
     </script>
+
+
 </body>
 
 </html>

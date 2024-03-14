@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Sudoku</title>
+<style>
+    input {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        margin: 2px;
+    }
+</style>
+</head>
+<body>
+
+<div id="sudokuBoard"></div>
+<button onclick="solveSudoku()">Solve</button>
+
+<script>
+// Model
+class SudokuModel {
+    constructor() {
+        this.board = [
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ];
+    }
+
+    setCellValue(row, col, value) {
+        this.board[row][col] = value;
+    }
+
+    getCellValue(row, col) {
+        return this.board[row][col];
+    }
+
+    solve() {
+        // Implement Sudoku solving algorithm here
+        // This function will solve the Sudoku puzzle
+    }
+}
+
+// View
+class SudokuView {
+    constructor(model, containerId) {
+        this.model = model;
+        this.container = document.getElementById(containerId);
+        this.render();
+    }
+
+    render() {
+        let html = "";
+        for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
+                html += `<input type="text" maxlength="1" value="${this.model.getCellValue(i, j)}" id="cell_${i}_${j}" onchange="updateModel(${i}, ${j}, this.value)">`;
+            }
+            html += "<br>";
+        }
+        this.container.innerHTML = html;
+    }
+}
+
+// Controller
+function updateModel(row, col, value) {
+    sudokuModel.setCellValue(row, col, value);
+}
+
+function solveSudoku() {
+    sudokuModel.solve();
+    sudokuView.render();
+}
+
+// Initialize
+const sudokuModel = new SudokuModel();
+const sudokuView = new SudokuView(sudokuModel, "sudokuBoard");
+</script>
+
+</body>
+</html>

@@ -29,12 +29,15 @@
             align-items: center;
             position: relative;
         }
+
         .box_NoLadder {
             background-color: rgb(249, 249, 91);
         }
+
         .box_up {
-            background-color: rgb(108, 238, 119);
+            background-color: rgb(41, 175, 52);
         }
+
         .box_upTo {
             background-color: rgb(170, 255, 177);
             border: 1px solid #000;
@@ -43,6 +46,7 @@
             align-items: center;
             position: relative;
         }
+
         .box_down {
             background-color: rgb(243, 106, 68);
             border: 1px solid #000;
@@ -51,6 +55,7 @@
             align-items: center;
             position: relative;
         }
+
         .box_downTo {
             background-color: rgb(244, 171, 151);
         }
@@ -61,12 +66,26 @@
             right: 1px;
             font-size: small;
         }
+
+        #brikke {
+            margin: 2px;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: blue;
+        }
+        #Terning {
+            height: 80px;
+            width: 100px;
+            font-size: 40px;
+        }
     </style>
 </head>
 
 <body>
 
     <div class="board" id="container"></div>
+    <button onclick="terning()" id="Terning">Start</button>
 
     <script>
         var colonner = 9;
@@ -74,6 +93,8 @@
         var mengde = colonner * rader;
         var listetall = 0;
         var listetall2 = 0;
+        var position = 0
+        var NyBrikkePos = 0
         const stiger = [
             ["down", 70, 87],
             ["up", 68, 85],
@@ -91,8 +112,10 @@
             ["nope", 0, 0],
         ];
 
-        createRow()
-        function createRow() {
+        createBoard()
+
+        function createBoard(brikkePos) {
+            deleteBoard()
             for (let StartRad = 1; StartRad <= rader; StartRad++) {
                 if (StartRad != 1) {
                     mengde = mengde - 9;
@@ -100,9 +123,14 @@
                 for (let StartCollonne = 1; StartCollonne <= colonner; StartCollonne++) {
                     let direction = getLadderFrom(mengde)
                     document.getElementById("container").innerHTML += /*HTML*/ `
-                    <div id="div_${mengde}" class="box box_${direction[0]}">${direction[1]}<span class="number">${mengde}</span> </div>
+                    <div id='div_${mengde}' class='box box_${direction[0]}'>${direction[1]}<span class='number'>${mengde}</span> </div>
                     `;
-                    PlaceLadderAt(mengde)
+                    direction2 = PlaceLadderAt(mengde)
+                    climbs = climb(brikkePos, direction, direction2)
+                    if (climbs != undefined) {
+                        NyBrikkePos = climbs
+                        console.log(climbs)
+                    }
                     if (StartCollonne != colonner) {
                         if (StartRad % 2) {
                             mengde--;
@@ -112,10 +140,85 @@
                     }
                 }
             }
+            return NyBrikkePos
+        }
+        function deleteBoard() {
+            document.getElementById("container").innerHTML = ``
         }
 
+        lagBrikke(position, 0)
+        function terning() {
+            var kast = Math.floor(Math.random() * 6) + 1;
+            lagBrikke(position, kast)
+            if (kast == 1) {
+                document.getElementById("Terning").innerHTML = "⚀"
+            } else if (kast == 2) {
+                document.getElementById("Terning").innerHTML = '⚁'
+            } else if (kast == 3) {
+                document.getElementById("Terning").innerHTML = '⚂'
+            } else if (kast == 4) {
+                document.getElementById("Terning").innerHTML = '⚃'
+            } else if (kast == 5) {
+                document.getElementById("Terning").innerHTML = '⚄'
+            } else {
+                document.getElementById("Terning").innerHTML = '⚅'
+            }
+        }
+        function lagBrikke(pos, terningkast) {
+            let NyPosition = pos + terningkast
+            mengde = colonner * rader;
+            listetall = 0;
+            listetall2 = 0;
+            var stige = createBoard(NyPosition)
+            if (NyPosition > 90) {
+                    over = NyPosition - 90
+                    NyPosition = 90 - over
+            }
+            if ((stige[0] != undefined) && (stige[0] != 0) && (NyPosition == stige[1])) {NyPosition = parseInt(stige[0]);}
+            
 
-        
+            if (pos != 0) {slettBrikke(pos)}
+            if (NyPosition != 0) {
+
+
+                let DivID = "div_" + NyPosition
+                document.getElementById(DivID);
+                document.getElementById(DivID).innerHTML = `
+                <div id="brikke"></div>
+                <span class="number">${NyPosition}</span>
+                `;
+                position = NyPosition
+            }
+        }
+
+        function climb(brikkepos, pos, neg) {
+            let stigePos = pos[1].split(' ')
+            let stigeNeg = neg[1].split(' ')
+            let up = stigePos[1]
+            let down = stigeNeg[1]
+            let squareNumPos = pos[2]
+            let squareNumNeg = neg[2]
+            let Newpos = brikkepos
+
+            if ((brikkepos == squareNumPos) && (stigePos[0] == "Til")) {
+                Newpos = up
+                return [Newpos, squareNumPos]
+            } else if ((brikkepos == squareNumNeg) && (stigeNeg[0] == "Til")) {
+                Newpos = down
+                return [Newpos, squareNumNeg]
+            }
+            
+        } 
+
+
+        function slettBrikke(pos) {
+            let DivID = "div_" + pos;
+            let brikke = document.getElementById("brikke")
+            if (brikke != null) {
+                brikke.remove()
+            }
+        }
+
         function getLadderFrom(squareNr) {
             let direction = "NoLadder"
             let LadderTo = ""
@@ -128,22 +231,27 @@
                 }
                 listetall++
             }
-
-            const smolList = [direction, LadderTo]
+            const smolList = [direction, LadderTo, squareNr]
             return smolList
         }
         function PlaceLadderAt (squareNr) {
             let DivID = "div_" + stiger[listetall2][2]
+            let square = stiger[listetall2][2]
+            let LadderFrom = ""
             if (stiger[listetall2][1] == squareNr) {
                 if (stiger[listetall2][0] == "up") {
                     document.getElementById(DivID).className = "box_upTo"
                 } else {
                     document.getElementById(DivID).className = "box_down"
-                    document.getElementById(DivID).innerHTML += "Til " + stiger[listetall2][1]
+                    LadderFrom = "Til " + stiger[listetall2][1]
+                    document.getElementById(DivID).innerHTML += LadderFrom
                 }
                 listetall2++
             }
+            const smolList2 = [0, LadderFrom, square]
+            return smolList2
         }
+
     </script>
 </body>
 
@@ -153,9 +261,16 @@
 
 
 
-<!-- STEP 3
-Lag en funksjon getLadderFrom. Denne tar en parameter, squareNo - 
-som representerer tallet i hver rute. Hvis det ikke starter noen stige i 00
-angitte squareNo, skal funksjonen returnere null. Ellers skal den returnere 
-rutenummeret som stigen fører til. I denne funksjonen blir det bare en lang 
-rekke av if-setninger. En for hver stige. -->
+<!-- 6) Bruk MVC og en variabel currentSquareNo. Tegn opp en brikke i riktig 
+rute - start på 1. For å teste dette, lag seks knapper som kaller 
+movePiece(1), movePiece(2) osv. opp til movePiece(6). Sørg for at 
+brikken flytter seg riktig antall steg når man trykker på disse 
+knappene - og sørg for at brikken følger stigen om den kommer til en 
+rute hvor en stige starter.
+
+7)Bytt ut de seks knappene med en knapp for å kaste en terning. 
+Vis riktig terning på enkelt vis, for eksempel ved å bruke unicode: ⚀⚁⚂⚃⚄⚅
+
+8)Kjenn igjen om brukeren har fullført spillet. 
+Vis en melding hvis spillet er ferdig og tilby 
+muligheten til å starte på nytt. -->
