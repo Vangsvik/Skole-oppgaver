@@ -33,11 +33,10 @@
     <button onclick="addTable()">addToTable</button>
     <br></br>
 
-    <button onclick="" style="font-size: xx-small;">AddDay</button><br><input type="number" id="Dag"/><br></br>
-
-    <button onclick="" style="font-size: xx-small;">AddTime</button><br><input type="number" id="Time"/><br></br>
-
-    <button onclick="" style="font-size: xx-small;">AddTemp</button><br><input type="number" id="temperatur"/><br></br>
+    <button onclick="" style="font-size: xx-small;">AddDay</button><br><input type="number" id="Dag" /><br></br>
+    <button onclick="" style="font-size: xx-small;">AddTime</button><br><input type="number" id="Time" /><br></br>
+    <button onclick="" style="font-size: xx-small;">addMinutt</button><br><input type="number" id="minutt" /><br></br>
+    <button onclick="" style="font-size: xx-small;">AddTemp</button><br><input type="number" id="temperatur" /><br></br>
 
     </table>
     <script>
@@ -80,7 +79,7 @@
         </tr>
         `;
         }
-        function addRow3(time, minutt, temepratur) {
+        function addRow3(dag, time, minutt, temepratur) {
             document.getElementById('table').innerHTML += /*HTML*/`
             <tr>
             <td>1</td>
@@ -90,7 +89,7 @@
         </tr>
         `;
         }
-        function addRow4(time, minutt, temperatur) {
+        function addRow4(dag, time, minutt, temperatur) {
             document.getElementById('table').innerHTML += /*HTML*/`    
             <tr>
             <td>1</td>
@@ -100,23 +99,37 @@
         </tr> 
             `;
         }
-        function AddDay() {
-            var day = document.getElementById('Dag').value;
+        function addDag() {
+            var dag = document.getElementById('dag').value;
+            var minutt = document.getElementById('minutt').value;
             var time = document.getElementById('time').value;
             var temperatur = document.getElementById('temperatur').value;
-            addRow(dag, time, 0, temepratur);
+            addRow(0, minutt, time, temepratur); //Dette ser ikke rett ut. skal det ikke være(dag, 0, 0);?
         }
-        function addTemp() {
+        function addMinutt() {
+            var dag = document.getElementById('dag').value;
+            var minutt = document.getElementById('minutt').value; //Føler jeg må fjerne dag og minutt her
             var time = document.getElementById('time').value;
             var temperatur = document.getElementById('temperatur').value;
-            addRow3(time, 0, temperatur);
+            addRow(dag, 0, time, temperatur);
+        }
+        function AddTime() {
+            var dag = document.getElementById('dag').value;
+            var minutt = document.getElementById('minutt').value; //her skal det vell bare være time,temperatur?
+            var time = document.getElementById('time').value;
+            var temperatur = document.getElementById('temperatur').value;
+            addRow(dag, minutt, 0, temperatur); //her også skal det ikke være(0, time, 0)? Eller er det omvendt?
         }
         function addTemp() {
+            var dag = document.getElementById('dag').value;
+            var minutt = document.getElementById('minutt').value;
+            var time = document.getElementById('time').value; //og her skal det vell bare være temperatur?
             var temperatur = document.getElementById('temperatur').value;
-            addRow4(0, 0, temperatur);
+            addRow(dag, minutt, time, 0);
         }
+        // Fikk litt hjelp av Chat GPT men tror faktisk den gjorde der værre for meg...
     </script>
-
+            
 </body>
 
 </html>
