@@ -36,9 +36,9 @@
     
     <button onclick="" style="font-size: xx-small;">AddDay</button><br><input type="number2" id="Dag"/></br>
     
-    <button onclick="">AddTime</button><br><input type="number3" id="Time"/></br>
+    <button onclick=""style="font-size: xx-small;>">AddTime</button><br><input type="number3" id="Time"/></br>
     
-    <button onclick="">AddTemp</button><br><input type="number4" id="Temperatur"/></br>
+    <button onclick=""style="font-size: xx-small;>">AddTemp</button><br><input type="number4" id="Temperatur"/></br>
     
     </table>
     <script>    
@@ -71,7 +71,7 @@
 
             `;
         }
-        function addRow2() {
+        function addRow2(Day, Time, Minutt, Temepratur) {
             document.getElementById('table').innerHTML += /*HTML*/`
             <tr>
             <td>1</td>
@@ -81,7 +81,7 @@
         </tr>
         `;
         }
-        function addRow3() {
+        function addRow3(Time, Minutt, Temepratur) {
             document.getElementById('table').innerHTML += /*HTML*/`
             <tr>
             <td>1</td>
@@ -91,7 +91,7 @@
         </tr>
         `;
         }
-        function addRow4() {
+        function addRow4(Time, Minutt, Temepratur) {
             document.getElementById('table').innerHTML += /*HTML*/`    
             <tr>
             <td>1</td>
@@ -100,6 +100,18 @@
             <td>7</td>
         </tr> 
             `;
+        }
+        function AddDay() {
+
+            var day = document.getElementById('Day').value;
+            var time = document.getElementById('Time').value;
+            var temperatur = document.getElementById('temperatur').value;
+            addRow('Day, Time, 0, Temepratur');
+        }
+        function addTemp() {
+         var time = document.getElementById('Time').value;
+         var temperatur = document.getElementById('Temperatur').value;
+         addRow3(time, 0, temperatur)   
         }
         </script>
 
