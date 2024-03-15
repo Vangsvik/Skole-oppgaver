@@ -27,34 +27,64 @@
     }
 </style>
 
-<body onload="showTable()">
-    <table id="myTable"></table>
+<body>
+    <button onclick="showTable()">VisTabell</button>
+    <table id="table"></table>
+    
+    </table>
     <script>
+
         function showTable() {
-            addRow('th', 'Dag', 'Time', 'Minutt', 'Temperatur');
-            addRow('td', 1, 10, 0, 5);
-            addRow('td', 1, 10, 15, 6);
-            addRow('td', 1, 10, 30, 7);
-            addRow('td', 0, 0, 0, 0)
-            addRow('td', 0, 0, 0, 0)
+            addRow1();
+            addRow2();
+            addRow3();
+            addRow3();
+            
+
         }
-        function addRow(tag, number1, number2, number3, number4){
-            document.getElementById('myTable').innerHTML += /*HTML*/`
+          
+        function addRow1() {
+            document.getElementById('table').innerHTML += /*HTML*/`
             <tr>
-                    <${tag}>${number1}</${tag}>
-                    <${tag}>${number2}</${tag}>
-                    <${tag}>${number3}</${tag}>
-                    <${tag}>${number3}</${tag}>
-                    <${tag}>${number4}</${tag}>
-                    </tr>   
-                    `;
-                    
-        
+            <th>Dag</th>
+            <th>Time</th>
+            <th>Minutt</th>
+            <th>Temperatur</th>
+        </tr>
+
+            `;
         }
-
-
-    </script>
-
+        function addRow2() {
+            document.getElementById('table').innerHTML += /*HTML*/`
+            <tr>
+            <td>1</td>
+            <td>10</td>
+            <td>0</td>
+            <td>5</td>
+        </tr>
+        `;
+        }
+        function addRow3() {
+            document.getElementById('table').innerHTML += /*HTML*/`
+            <tr>
+            <td>1</td>
+            <td>10</td>
+            <td>15</td>
+            <td>6</td>
+        </tr>
+        `;
+        }
+        function addRow4() {
+            document.getElementById('table').innerHTML += /*HTML*/`    
+            <tr>
+            <td>1</td>
+            <td>10</td>
+            <td>30</td>
+            <td>7</td>
+        </tr> 
+            `;
+        }
+            </script>
 
 </body>
 
